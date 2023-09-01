@@ -32,17 +32,11 @@
 
 	import { onMount } from "svelte";
 	import { marked } from "marked";
-	// import createDOMPurify from "dompurify";
 	import DOMPurify from "dompurify";
 
-	// import { JSDOM } from "jsdom";
 	let html2;
-	// let input = "**wow** https://www.youtube.com/watch?v=YOPY0ZpLdBw";
 
 	onMount(() => {
-		// const window = new JSDOM("").window;
-		// const DOMPurify = createDOMPurify(window);
-
 		const renderer = new marked.Renderer();
 		const linkRenderer = renderer.link;
 		const imageRenderer = renderer.image;
@@ -62,7 +56,7 @@
 					`<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" loading="lazy" ` +
 					`title="YouTube video player" frameborder="0" ` +
 					`allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-			} else if (/\.(jpeg|jpg|gif|png|webp)$/i.test(href)) {
+			} else if (/\.(jpeg|jpg|gif|png|webp|svg)$/i.test(href)) {
 				html = `<img src="${href}" alt="" style="max-width:100%; height:auto;">`;
 			}
 			return html;

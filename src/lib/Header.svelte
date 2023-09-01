@@ -31,6 +31,8 @@
 
 	// The picker must have a root element to insert itself into
 	$: rootElement = document.querySelector("#pickerContainer");
+
+	import pickTextColorBasedOnBgColorAdvanced from "./colorLightOrDark";
 </script>
 
 <header>
@@ -41,16 +43,23 @@
 		</div>
 	{:else}
 		<div class="right-side">
-			<span>you are </span><ProfilePictureEmoji
-				name={$username}
-				emoji={$emoji}
-				inline={true}
-			/><span>{$username} </span>
+			{#if showChangeButton}
+				<!-- <button on:click={changeName}>Change</button> -->
+			{/if}
+			<button
+				on:click={showChangeProfileDialog}
+				style={`background: cyan; color: ${pickTextColorBasedOnBgColorAdvanced(
+					"#00FFFF",
+					"#FFFFFF",
+					"#000000"
+				)}`}
+				><ProfilePictureEmoji
+					name={$username}
+					emoji={$emoji}
+					inline={true}
+				/><span>{$username} </span></button
+			>
 		</div>
-		{#if showChangeButton}
-			<!-- <button on:click={changeName}>Change</button> -->
-		{/if}
-		<button on:click={showChangeProfileDialog}>Change</button>
 	{/if}
 </header>
 
@@ -83,8 +92,9 @@
 		position: sticky;
 		top: 0;
 		width: 100%;
-		background: blue;
+		border-bottom: 1px solid grey;
 
+		background-color: black;
 		display: flex;
 		align-items: center;
 	}

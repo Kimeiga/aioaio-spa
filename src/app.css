@@ -109,7 +109,7 @@ body {
   max-width: 100%;
 }
 
-body {
+html, dialog {
   background: #111;
   color: #eee;
 }
@@ -131,4 +131,36 @@ input:not([type="checkbox"]):not([type="radio"]),
 select,
 textarea {
   display: block;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid grey;
+}
+
+input, button, textarea, select {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #888;
+}
+
+button {
+    /* border: none; */
+}
+button {
+    background: #333; /* a dark gray */
+    color: white;
+    /* border: none; */
+}
+
+button:hover {
+    background: #555; /* slightly lighter gray for hover */
+}
+
+button:active {
+    background: #222; /* slightly darker gray for active/click */
 }
